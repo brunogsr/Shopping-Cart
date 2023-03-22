@@ -15,4 +15,4 @@ export const fetchProductsList = async (query) => {
   }
 };
 
-fetchProductsList('computador');
+// console.log(fetchProductsList());

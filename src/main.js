@@ -10,6 +10,8 @@ const Poggers = async () => {
   listResults.forEach((produto) => {
     sectionHtml[0].appendChild(createProductElement(produto));
   });
+  const loadingDOM = document.getElementsByClassName('loading')[0];
+  loadingDOM.parentElement.removeChild(loadingDOM);
 };
 
 Poggers();
