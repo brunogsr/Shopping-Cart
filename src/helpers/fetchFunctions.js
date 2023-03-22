@@ -8,12 +8,11 @@ export const fetchProductsList = async (query) => {
     const BASE_URL = 'https://api.mercadolibre.com/sites/MLB/search?q=';
     const objParam = await fetch(`${BASE_URL}${query}`);
     const objParamJson = await objParam.json();
-    console.log(objParamJson.results);
+    // console.log(objParamJson.results);
     return objParamJson.results;
   } catch (error) {
-    console.log(error.message);
-    return error;
+    throw new Error('Termo de busca não informado');
   }
 };
 
-fetchProductsList();
+fetchProductsList('computador');

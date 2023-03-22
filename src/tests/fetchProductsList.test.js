@@ -23,11 +23,9 @@ describe('Teste a função fetchProductsList', () => {
     expect(result).toEqual(computadorSearch);
   });
 
-  it('should return a error if is invalid action', async () => {
-    const result = await fetchProductsList()
-        expect(result).toBeInstanceOf(Error);
-        expect(result.message).toEqual('Termo de busca não informado');
-    })
+  it('deve retornar um erro com a mensagem caso não entregue parâmetro', async () => {
+    await expect(fetchProductsList()).rejects.toThrow('Termo de busca não informado');
+  })
 
 })
 
