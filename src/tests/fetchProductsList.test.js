@@ -24,8 +24,7 @@ describe('Teste a função fetchProductsList', () => {
   });
 
   it('deve retornar um erro com a mensagem caso não entregue parâmetro', async () => {
-    const emptyFunc = await fetchProductsList();
-    expect(emptyFunc).rejects.toThrow('Termo de busca não informado');
+    await expect(fetchProductsList()).rejects.toThrow('Termo de busca não informado');
   })
 
 })

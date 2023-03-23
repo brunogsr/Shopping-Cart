@@ -1,7 +1,3 @@
-export const fetchProduct = () => {
-  // seu código aqui
-};
-
 export const fetchProductsList = async (query) => {
   try {
     const BASE_URL = 'https://api.mercadolibre.com/sites/MLB/search?q=';
@@ -18,3 +14,18 @@ export const fetchProductsList = async (query) => {
 };
 
 (fetchProductsList('computador'));
+
+export const fetchProduct = async (id) => {
+  if (!id) {
+    throw new Error('ID não informado');
+  }
+  try {
+    const BASE_URL = 'https://api.mercadolibre.com/items/';
+    const objParam = await fetch(`${BASE_URL}${id}`);
+    const objParamJson = await objParam.json();
+    // console.log(objParamJson);
+    return objParamJson;
+  } catch (error) {
+    throw new Error('ID não informado');
+  }
+};
