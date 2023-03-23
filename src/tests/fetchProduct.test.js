@@ -24,7 +24,7 @@ describe('Teste a função fetchProduct',  () => {
   });
 
   it('fetchProduct deve retornar um erro com a mensagem "ID não informado" caso não entregue parâmetro', async () => {
-    await expect(fetchProduct()).rejects.toThrow('ID não informado');
+    await expect(fetchProduct()).rejects.toEqual(new Error('ID não informado'));
   })
 
 });
