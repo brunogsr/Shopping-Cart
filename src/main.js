@@ -4,14 +4,19 @@ import { fetchProductsList } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
 
 const Poggers = async () => {
-  const listResults = await fetchProductsList('computador');
-  const sectionHtml = document.getElementsByClassName('products');
-  // console.log(listResults);
-  listResults.forEach((produto) => {
-    sectionHtml[0].appendChild(createProductElement(produto));
-  });
-  const loadingDOM = document.getElementsByClassName('loading')[0];
-  loadingDOM.parentElement.removeChild(loadingDOM);
+  try {
+    const listResults = await fetchProductsList('computador');
+    const sectProduct = document.getElementsByClassName('products');
+    // console.log(listResults);
+    const loadingDOM = document.querySelector('h1.loading');
+    loadingDOM.remove();
+    listResults.forEach((produto) => {
+      sectProduct[0].appendChild(createProductElement(produto));
+    });
+  } catch (error) {
+    sectProduct.innerHTML = 'Algum erro ocorreu, recarregue a página e tente novamente';
+    sectProduct.classList.add('error');
+  }
 };
 
 Poggers();

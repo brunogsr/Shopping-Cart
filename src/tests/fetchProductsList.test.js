@@ -30,7 +30,6 @@ describe('Teste a função fetchProductsList', () => {
 
 })
 
-
   // it('fetch é chamado ao executar fetchProductsList', () => {
 
   // });
