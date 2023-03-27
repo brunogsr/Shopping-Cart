@@ -2,7 +2,7 @@ import { searchCep } from './helpers/cepFunctions';
 import './style.css';
 import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
 import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
-import { saveCartID } from './helpers/cartFunctions';
+import { getSavedCartIDs, saveCartID } from './helpers/cartFunctions';
 
 let buttonAddCart;
 
@@ -38,6 +38,17 @@ const productScreen = async () => {
     loadingDOM.parentElement.removeChild(loadingDOM);
   }
 };
+
+const loadCartProd = async (savedIds) => {
+  const carrinhoList = document.querySelector('.cart__products');
+  // console.log(savedIds);
+  const p = await Promise.all(savedIds.map((ids) => fetchProduct(ids)));
+  // const p = await Promise.all(productsList);
+  // console.log(p);
+  p.forEach((prods) => carrinhoList.appendChild(createCartProductElement(prods)));
+};
+
+loadCartProd(getSavedCartIDs());
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 
